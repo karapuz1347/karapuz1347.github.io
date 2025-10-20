@@ -10,126 +10,32 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="МатКрос">
     <meta name="theme-color" content="#f0fdf4">
-    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogItCc0LDRgNGC0LXQvNCw0YLRgtC40Y/QudGGINGB0YDQvtGB0YPRgNCy0L4iLAogICJzaG9ydF9uYW1lIjogItCc0LDRgNGC0YDQvtCyIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEboviYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNuYm05dVlYUWlJRDBpTVRBd0lpQm1hV3hzT2lCM2FHbDBaV04wYVc5dWN5QjNhR1YwWldOMGFXOXVjeTVqYjIwdllYQnBMM1JoZDNjdVoybDBhSFZpTG5KdmJHeHZjM1JoZDNjdVoybDBhSFZpTDNCNEwzUnpMekl3TURBdmMzWm5MelV3SURJeU1DSStVR2x1WjNkaFoyVnVkR0ZzYkM1amIyMHViV0Z5YTJSdmQyND0iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNbXN2Y0d4aGRYUm9MM1J6YVhSMGFXOXVjeTVqYjIwdllYQnBMM1JoZDNjdVoybDBhSFZpTG5KdmJHeHZjM1JoZDNjdVoybDBhSFZpTDNCNEwzUnpMekl3TURBdmMzWm5MelV3SURJeU1DSStVR2x1WjNkaFoyVnVkR0ZzYkM1amIyMHViV0Z5YTJSdmQyND0iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXSwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmMGZkZjQiLAogICJ0aGVtZV9jb2xvciI6ICIjMmI4ODUwIiwKICAiZGVzY3JpcHRpb24iOiAi0JLQtNGB0LXQu9CwINC80LDRgNGC0LXQvNCw0YLRgtC40Y/QudGGINCz0L7Qu9C+0LLQvtC60LrQsNGC0LAg0LTQvtC10L3Rg9C60LDQvdC90YvQtSDRjNC+0LfQutC1LiIKfQo=">
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogItCc0LDRgNGC0LXQvNCw0YLRgtC40Y/QudGGINGB0YDQvtGB0YPRgNCy0L4iLAogICJzaG9ydF9uYW1lIjogItCc0LDRgNGC0YDQvtCyIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEboviYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNuYm05dVlYUWlJRDBpTVRBd0lpQm1hV3hzT2lCM2FHbDBaV04wYVc5dWN5QjNhR1YwWldOMGFXOXVjeTVqYjIwdllYQnBMM1JoZDNjdVoybDBhSFZpTG5KdmJHeHZjM1JoZDNjdVoybDBhSFZpTDNCNEwzUnpMekl3TURBdmMzWm5MelV3SURJeU1DSStVR2x1WjNkaFoyVnVkR0ZzYkM1amIyMHViV0Z5YTJSdmQyND0iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjE5MngxOTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNbXN2Y0d4aGRYUm9MM1J6YVhSMGFXOXVjeTVqYjIwdllYQnBMM1JoZDNjdVoybDBhSFZpTG5KdmJHeHZjM1JoZDNjdVoybDBhSFZpTDNCNEwzUnpMekl3TURBdmMzWm5MelV3SURJeU1DSStVR2x1WjNkaFoyVnVkR0ZzYkM1amIyMHViV0Z5YTJSdmQyND0iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiLAogICAgICAicHVycG9zZSI6ICJhbnkgbWFza2FibGUiCiAgICB9CiAgXSwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmMGZkZjQiLAogICJ0aGVtZV9jb2xvciI6ICIjMmI4ODUwIiwKICAiZGVzY divinaaAiOiAi0JLQtNGB0LXQu9CwINC80LDRgNGC0LXQvNCw0YLRgtC40Y/QudGGINCz0L7Qu9C+0LLQvtC60LrQsNGC0LAg0LTQvtC10L3Rg9C60LDQvdC90YvQtSDRjNC+0LfQutC1LiIKfQo=">
     
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body {
-            font-family: 'Nunito', sans-serif;
-            touch-action: manipulation;
-            overscroll-behavior: contain;
-            background-color: #f0fdf4; /* green-50 */
-        }
-        .main-container {
-            background-color: white;
-            border-radius: 1.5rem; /* 24px */
-            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-            border: 1px solid #e5e7eb;
-        }
-        .grid-container {
-            display: grid;
-            grid-template-columns: repeat(5, minmax(0, 1fr));
-            grid-template-rows: repeat(5, minmax(0, 1fr));
-            gap: 0.5rem;
-            width: 100%;
-            max-width: 400px;
-            aspect-ratio: 1 / 1;
-        }
-        .cell {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border-radius: 0.75rem; /* 12px */
-            font-size: clamp(1.4rem, 5vw, 1.7rem);
-            font-weight: 800;
-            color: #374151; /* gray-700 */
-        }
-        .input {
-            background-color: #fefce8; /* yellow-50 */
-            border: 2px dashed #fde68a; /* yellow-200 */
-            cursor: pointer;
-            transition: all 0.2s ease-in-out;
-        }
-        .input:hover, .input.over {
-            background-color: #fef08a; /* yellow-200 */
-            border-color: #facc15; /* yellow-400 */
-            transform: scale(1.05);
-        }
-        .given, .operator, .equals {
-            color: #4b5563; /* gray-600 */
-        }
-        .number-tile {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: clamp(55px, 15vw, 65px);
-            height: clamp(55px, 15vw, 65px);
-            background-color: #ffffff;
-            border: 2px solid #86efac; /* green-300 */
-            border-bottom: 4px solid #22c55e; /* green-500 */
-            border-radius: 1rem; /* 16px */
-            font-size: clamp(1.4rem, 5vw, 1.7rem);
-            font-weight: 800;
-            color: #166534; /* green-800 */
-            cursor: grab;
-            transition: all 0.15s ease-out;
-            user-select: none;
-        }
-        .number-tile:active {
-            cursor: grabbing;
-            transform: scale(1.1);
-            border-bottom-width: 2px;
-            margin-top: 2px;
-        }
-        .number-tile.dragging {
-            opacity: 0.8;
-            z-index: 1000;
-            position: fixed;
-            pointer-events: none;
-            transform: scale(1.1);
-        }
-        .number-tile.used {
-            opacity: 0.3;
-            cursor: not-allowed;
-            background-color: #f9fafb;
-            border-color: #d1d5db;
-        }
-        .correct {
-            border-color: #4ade80 !important; /* green-400 */
-            background-color: #dcfce7 !important; /* green-100 */
-            animation: bounce 0.5s ease;
-        }
-        .incorrect {
-            border-color: #f87171 !important; /* red-400 */
-            background-color: #fee2e2 !important; /* red-100 */
-            animation: shake 0.5s ease;
-        }
-        .action-button {
-            padding: 0.75rem 1rem;
-            border-radius: 1rem;
-            font-weight: 700;
-            font-size: 1.125rem;
-            color: white;
-            transition: all 0.2s ease-in-out;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-            border-bottom-width: 4px;
-        }
-        .action-button:active {
-            transform: translateY(2px);
-            border-bottom-width: 2px;
-        }
-        .check-btn {
-            background-color: #22c55e; /* green-500 */
-            border-color: #15803d; /* green-700 */
-        }
+        body { font-family: 'Nunito', sans-serif; touch-action: manipulation; overscroll-behavior: contain; background-color: #f0fdf4; }
+        .main-container { background-color: white; border-radius: 1.5rem; box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.05), 0 4px 6px -4px rgb(0 0 0 / 0.1); border: 1px solid #e5e7eb; }
+        .grid-container { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); grid-template-rows: repeat(5, minmax(0, 1fr)); gap: 0.5rem; width: 100%; max-width: 400px; aspect-ratio: 1 / 1; }
+        .cell { display: flex; justify-content: center; align-items: center; border-radius: 0.75rem; font-size: clamp(1.4rem, 5vw, 1.7rem); font-weight: 800; color: #374151; }
+        .input { background-color: #fefce8; border: 2px dashed #fde68a; cursor: pointer; transition: all 0.2s ease-in-out; }
+        .input:hover, .input.over { background-color: #fef08a; border-color: #facc15; transform: scale(1.05); }
+        .given, .operator, .equals { color: #4b5563; }
+        .number-tile { display: flex; justify-content: center; align-items: center; width: clamp(55px, 15vw, 65px); height: clamp(55px, 15vw, 65px); background-color: #ffffff; border: 2px solid #86efac; border-bottom: 4px solid #22c55e; border-radius: 1rem; font-size: clamp(1.4rem, 5vw, 1.7rem); font-weight: 800; color: #166534; cursor: grab; transition: all 0.15s ease-out; user-select: none; }
+        .number-tile:active { cursor: grabbing; transform: scale(1.1); border-bottom-width: 2px; margin-top: 2px; }
+        .number-tile.dragging { opacity: 0.8; z-index: 1000; position: fixed; pointer-events: none; transform: scale(1.1); }
+        .number-tile.used { opacity: 0.3; cursor: not-allowed; background-color: #f9fafb; border-color: #d1d5db; }
+        .correct { border-color: #4ade80 !important; background-color: #dcfce7 !important; animation: bounce 0.5s ease; }
+        .incorrect { border-color: #f87171 !important; background-color: #fee2e2 !important; animation: shake 0.5s ease; }
+        .action-button { padding: 0.75rem 1rem; border-radius: 1rem; font-weight: 700; font-size: 1.125rem; color: white; transition: all 0.2s ease-in-out; box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); border-bottom-width: 4px; }
+        .action-button:active { transform: translateY(2px); border-bottom-width: 2px; }
+        .check-btn { background-color: #22c55e; border-color: #15803d; }
         .check-btn:hover { background-color: #16a34a; }
-        .reset-btn {
-            background-color: #f97316; /* orange-500 */
-            border-color: #c2410c; /* orange-700 */
-        }
+        .reset-btn { background-color: #f97316; border-color: #c2410c; }
         .reset-btn:hover { background-color: #ea580c; }
-        
+        .next-level-btn { background-color: #3b82f6; border-color: #1d4ed8; }
+        .next-level-btn:hover { background-color: #2563eb; }
         .confetti-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100; }
         .confetti { position: absolute; width: 10px; height: 10px; background-color: #f00; border-radius: 50%; animation: fall 5s linear forwards; }
         @keyframes fall { to { transform: translateY(100vh) rotate(720deg); opacity: 0; } }
@@ -144,7 +50,7 @@
     <div class="main-container w-full max-w-md p-4 sm:p-6">
         <div class="text-center mb-4">
             <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-800">Математичний Кросворд</h1>
-            <p class="text-gray-500 font-semibold">Рівень 1</p>
+            <p id="level-indicator" class="text-gray-500 font-semibold">Рівень 1</p>
         </div>
 
         <div class="flex justify-center mb-4">
@@ -155,88 +61,116 @@
 
         <div id="numbers-container" class="flex flex-wrap justify-center gap-3 mb-6 p-4 bg-green-50 rounded-xl"></div>
 
-        <div class="flex flex-col sm:flex-row gap-4">
-            <button id="check-btn" class="action-button check-btn w-full">
-                Перевірити
-            </button>
-            <button id="reset-btn" class="action-button reset-btn w-full">
-                Скинути
-            </button>
+        <div id="controls-container" class="flex flex-col sm:flex-row gap-4">
+            <button id="check-btn" class="action-button check-btn w-full">Перевірити</button>
+            <button id="reset-btn" class="action-button reset-btn w-full">Скинути</button>
         </div>
+        
+        <div id="next-level-container" class="hidden flex-col gap-4 mt-4">
+             <button id="next-level-btn" class="action-button next-level-btn w-full">Наступний Рівень</button>
+        </div>
+        
+         <div id="win-container" class="hidden text-center mt-4">
+             <h2 class="text-2xl font-bold text-green-600 mb-4">Вітаємо! Ви пройшли всі рівні!</h2>
+             <button id="play-again-btn" class="action-button check-btn w-full">Грати знову</button>
+        </div>
+
     </div>
     
     <script>
-        // Код JavaScript залишився без змін, тому що він відповідає за логіку, а не за дизайн.
-        // Я залишаю його тут, щоб файл був повністю робочим.
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                const swContent = `
-                    const CACHE_NAME = 'math-crossword-cache-v2'; // Змінив версію кешу
-                    const urlsToCache = [ './' ];
-                    self.addEventListener('install', event => {
-                        event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
-                    });
-                    self.addEventListener('fetch', event => {
-                        event.respondWith(caches.match(event.request).then(response => response || fetch(event.request)));
-                    });
-                    self.addEventListener('activate', event => {
-                      const cacheWhitelist = [CACHE_NAME];
-                      event.waitUntil(
-                        caches.keys().then(cacheNames => {
-                          return Promise.all(
-                            cacheNames.map(cacheName => {
-                              if (cacheWhitelist.indexOf(cacheName) === -1) {
-                                return caches.delete(cacheName);
-                              }
-                            })
-                          );
-                        })
-                      );
-                    });
-                `;
-                const blob = new Blob([swContent], { type: 'application/javascript' });
-                const swURL = URL.createObjectURL(blob);
-                navigator.serviceWorker.register(swURL);
-            });
-        }
+        // --- Service Worker Logic Removed to fix the error ---
         
         document.addEventListener('DOMContentLoaded', () => {
+            // --- DOM Elements ---
+            const levelIndicator = document.getElementById('level-indicator');
             const gridContainer = document.getElementById('grid-container');
             const numbersContainer = document.getElementById('numbers-container');
-            const checkBtn = document.getElementById('check-btn');
-            const resetBtn = document.getElementById('reset-btn');
             const messageArea = document.getElementById('message-area');
             const confettiContainer = document.getElementById('confetti-container');
-            
-            const puzzleDefinition = {
-                rows: 5,
-                cols: 5,
-                numbers: [2, 3, 5, 7],
-                solution: { 'c00': 7, 'c02': 3, 'c20': 5, 'c22': 2 },
-                grid: [
-                    { id: 'c00', type: 'input' }, { type: 'operator', value: '+' }, { id: 'c02', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '10' },
-                    { type: 'operator', value: '+' }, null, { type: 'operator', value: '*' }, null, null,
-                    { id: 'c20', type: 'input' }, { type: 'operator', value: '*' }, { id: 'c22', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '10' },
-                    { type: 'equals', value: '=' }, null, { type: 'equals', value: '=' }, null, null,
-                    { type: 'given', value: '12' }, null, { type: 'given', value: '6' }, null, null,
-                ]
+            const controlsContainer = document.getElementById('controls-container');
+            const nextLevelContainer = document.getElementById('next-level-container');
+            const winContainer = document.getElementById('win-container');
+            const checkBtn = document.getElementById('check-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const nextLevelBtn = document.getElementById('next-level-btn');
+            const playAgainBtn = document.getElementById('play-again-btn');
+
+            // --- Game Data ---
+            const levels = [
+                { // Level 1
+                    numbers: [2, 3, 5, 7],
+                    solution: { 'c00': 7, 'c02': 3, 'c20': 5, 'c22': 2 },
+                    grid: [
+                        { id: 'c00', type: 'input' }, { type: 'operator', value: '+' }, { id: 'c02', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '10' },
+                        { type: 'operator', value: '+' }, null, { type: 'operator', value: '*' }, null, null,
+                        { id: 'c20', type: 'input' }, { type: 'operator', value: '*' }, { id: 'c22', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '10' },
+                        { type: 'equals', value: '=' }, null, { type: 'equals', value: '=' }, null, null,
+                        { type: 'given', value: '12' }, null, { type: 'given', value: '6' }, null, null,
+                    ]
+                },
+                { // Level 2
+                    numbers: [3, 5, 8, 12],
+                    solution: { 'c00': 12, 'c02': 5, 'c20': 8, 'c22': 3 },
+                    grid: [
+                        { id: 'c00', type: 'input' }, { type: 'operator', value: '-' }, { id: 'c02', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '7' },
+                        { type: 'operator', value: '-' }, null, { type: 'operator', value: '+' }, null, null,
+                        { id: 'c20', type: 'input' }, { type: 'operator', value: '+' }, { id: 'c22', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '11' },
+                        { type: 'equals', value: '=' }, null, { type: 'equals', value: '=' }, null, null,
+                        { type: 'given', value: '4' }, null, { type: 'given', value: '8' }, null, null,
+                    ]
+                },
+                { // Level 3
+                    numbers: [2, 3, 6, 18],
+                    solution: { 'c00': 18, 'c02': 3, 'c20': 6, 'c22': 2 },
+                    grid: [
+                        { id: 'c00', type: 'input' }, { type: 'operator', value: '÷' }, { id: 'c02', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '6' },
+                        { type: 'operator', value: '÷' }, null, { type: 'operator', value: '*' }, null, null,
+                        { id: 'c20', type: 'input' }, { type: 'operator', value: '*' }, { id: 'c22', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '12' },
+                        { type: 'equals', value: '=' }, null, { type: 'equals', value: '=' }, null, null,
+                        { type: 'given', value: '3' }, null, { type: 'given', value: '5' }, null, { type: 'operator', value: '+' },
+                    ]
+                }
+            ];
+
+            // --- Game State ---
+            let gameState = {
+                currentLevel: 0
             };
-            
             let currentDraggedTile = null;
             let currentDraggedValue = null;
             let ghostTile = null;
-
-            function shuffleArray(array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-                return array;
+            
+            // --- Functions ---
+            function saveState() {
+                localStorage.setItem('mathCrosswordState', JSON.stringify(gameState));
             }
 
-            function createGrid() {
+            function loadState() {
+                const savedState = localStorage.getItem('mathCrosswordState');
+                if (savedState) {
+                    gameState = JSON.parse(savedState);
+                }
+            }
+            
+            function loadLevel(levelIndex) {
+                if (levelIndex >= levels.length) {
+                    showWinScreen();
+                    return;
+                }
+
+                gameState.currentLevel = levelIndex;
+                const levelData = levels[levelIndex];
+                
+                // Update UI
+                levelIndicator.textContent = `Рівень ${levelIndex + 1}`;
+                messageArea.textContent = '';
+                controlsContainer.classList.remove('hidden');
+                nextLevelContainer.classList.add('hidden');
+                winContainer.classList.add('hidden');
+                
+                // Create Grid
                 gridContainer.innerHTML = '';
-                puzzleDefinition.grid.forEach(cellData => {
+                levelData.grid.forEach(cellData => {
                     if (cellData === null) {
                         gridContainer.appendChild(document.createElement('div'));
                         return;
@@ -245,175 +179,41 @@
                     cell.className = `cell ${cellData.type}`;
                     if (cellData.id) cell.id = cellData.id;
                     if (cellData.value) cell.textContent = cellData.value;
-                    
                     if (cellData.type === 'input') {
                         cell.addEventListener('click', onCellClick);
                     }
                     gridContainer.appendChild(cell);
                 });
-            }
 
-            function createNumberBank() {
+                // Create Number Bank
                 numbersContainer.innerHTML = '';
-                shuffleArray([...puzzleDefinition.numbers]).forEach(num => {
+                shuffleArray([...levelData.numbers]).forEach(num => {
                     const tile = document.createElement('div');
                     tile.className = 'number-tile';
                     tile.textContent = num;
                     tile.draggable = true;
                     tile.dataset.value = num;
-                    
                     tile.addEventListener('dragstart', onDragStart);
                     tile.addEventListener('dragend', onDragEnd);
                     tile.addEventListener('touchstart', onTouchStart, {passive: false});
                     numbersContainer.appendChild(tile);
                 });
+
+                saveState();
             }
             
-            function onCellClick(e) {
-                const cell = e.target;
-                if (cell.textContent && cell.classList.contains('input')) {
-                     const value = cell.textContent;
-                     cell.textContent = '';
-                     cell.dataset.value = '';
-                     const tile = numbersContainer.querySelector(`.number-tile[data-value="${value}"].used`);
-                     if(tile) {
-                         tile.classList.remove('used');
-                     }
-                }
-            }
-
-            function onDragStart(e) {
-                const tile = e.target;
-                if (tile.classList.contains('used')) {
-                    e.preventDefault(); return;
-                }
-                currentDraggedTile = tile;
-                currentDraggedValue = tile.dataset.value;
-                e.dataTransfer.setData('text/plain', currentDraggedValue);
-                setTimeout(() => tile.style.opacity = '0.5', 0);
-            }
-
-            function onDragEnd(e) {
-                if (currentDraggedTile) {
-                   setTimeout(() => currentDraggedTile.style.opacity = '1', 0);
-                }
-                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
-                currentDraggedTile = null;
-                currentDraggedValue = null;
-            }
-            
-            document.addEventListener('dragover', (e) => {
-                 e.preventDefault();
-                 const dropTarget = getDropTarget(e.clientX, e.clientY);
-                 document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
-                 if(dropTarget) dropTarget.classList.add('over');
-            });
-
-            document.addEventListener('drop', (e) => {
-                e.preventDefault();
-                const dropTarget = getDropTarget(e.clientX, e.clientY);
-                if (dropTarget && currentDraggedValue) {
-                    handleDrop(dropTarget);
-                }
-                onDragEnd(e);
-            });
-            
-            function createGhostTile(tile) {
-                ghostTile = tile.cloneNode(true);
-                ghostTile.classList.add('dragging');
-                document.body.appendChild(ghostTile);
-            }
-
-            function onTouchStart(e) {
-                e.preventDefault();
-                const tile = e.target.closest('.number-tile');
-                if (!tile || tile.classList.contains('used')) return;
-                
-                currentDraggedTile = tile;
-                currentDraggedValue = tile.dataset.value;
-                
-                createGhostTile(tile);
-                const touch = e.touches[0];
-                updateGhostPosition(touch.clientX, touch.clientY);
-                
-                document.addEventListener('touchmove', onTouchMove, {passive: false});
-                document.addEventListener('touchend', onTouchEnd);
-            }
-
-            function onTouchMove(e) {
-                e.preventDefault();
-                const touch = e.touches[0];
-                updateGhostPosition(touch.clientX, touch.clientY);
-
-                const dropTarget = getDropTarget(touch.clientX, touch.clientY);
-                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
-                if (dropTarget) {
-                    dropTarget.classList.add('over');
-                }
-            }
-            
-            function onTouchEnd(e) {
-                const touch = e.changedTouches[0];
-                const dropTarget = getDropTarget(touch.clientX, touch.clientY);
-
-                if (dropTarget) {
-                    handleDrop(dropTarget);
-                }
-
-                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
-                if (ghostTile) {
-                    ghostTile.remove();
-                    ghostTile = null;
-                }
-                currentDraggedTile = null;
-                currentDraggedValue = null;
-                
-                document.removeEventListener('touchmove', onTouchMove);
-                document.removeEventListener('touchend', onTouchEnd);
-            }
-            
-            function updateGhostPosition(x, y) {
-                if(ghostTile) {
-                    ghostTile.style.left = `${x - ghostTile.offsetWidth / 2}px`;
-                    ghostTile.style.top = `${y - ghostTile.offsetHeight / 2}px`;
-                }
-            }
-            
-            function getDropTarget(x, y) {
-                 const element = document.elementFromPoint(x, y);
-                 return (element && element.classList.contains('input')) ? element : null;
-            }
-            
-            function handleDrop(dropTarget) {
-                if (dropTarget.textContent) {
-                    const existingValue = dropTarget.dataset.value;
-                    const existingTile = numbersContainer.querySelector(`.number-tile[data-value="${existingValue}"].used`);
-                    if (existingTile) {
-                        existingTile.classList.remove('used');
-                    }
-                }
-                
-                dropTarget.textContent = currentDraggedValue;
-                dropTarget.dataset.value = currentDraggedValue;
-
-                if (currentDraggedTile) {
-                   currentDraggedTile.classList.add('used');
-                }
-                
-                clearFeedback();
-            }
-
             function checkSolution() {
+                const levelData = levels[gameState.currentLevel];
                 let allCorrect = true;
                 let isComplete = true;
 
-                for (const id in puzzleDefinition.solution) {
+                for (const id in levelData.solution) {
                     const cell = document.getElementById(id);
                     if (!cell.textContent) {
                         isComplete = false;
                         continue;
                     }
-                    if (cell.textContent != puzzleDefinition.solution[id]) {
+                    if (cell.textContent != levelData.solution[id]) {
                         allCorrect = false;
                         cell.classList.add('incorrect');
                     } else {
@@ -428,31 +228,169 @@
                 }
 
                 if (allCorrect) {
-                    messageArea.textContent = 'Чудово!';
+                    messageArea.textContent = 'Чудово! Все вірно!';
                     messageArea.style.color = '#22c55e';
                     triggerConfetti();
+                    controlsContainer.classList.add('hidden');
+                    nextLevelContainer.classList.remove('hidden');
+                    if (gameState.currentLevel >= levels.length - 1) {
+                        nextLevelBtn.classList.add('hidden');
+                        showWinScreen();
+                    } else {
+                        nextLevelBtn.classList.remove('hidden');
+                    }
                 } else {
                     messageArea.textContent = 'Є помилки. Спробуйте ще.';
                     messageArea.style.color = '#ef4444';
                 }
             }
 
-            function clearFeedback() {
-                document.querySelectorAll('.input').forEach(cell => {
-                    cell.classList.remove('correct', 'incorrect');
+            function showWinScreen() {
+                messageArea.textContent = '';
+                controlsContainer.classList.add('hidden');
+                nextLevelContainer.classList.add('hidden');
+                winContainer.classList.remove('hidden');
+            }
+            
+            function resetCurrentLevel() {
+                loadLevel(gameState.currentLevel);
+            }
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            // --- Drag and Drop Logic (mostly unchanged) ---
+            function onCellClick(e) { /* ... */ }
+            function onDragStart(e) { /* ... */ }
+            function onDragEnd(e) { /* ... */ }
+            function onTouchStart(e) { /* ... */ }
+            function onTouchMove(e) { /* ... */ }
+            function onTouchEnd(e) { /* ... */ }
+            function handleDrop(dropTarget) { /* ... */ }
+            function getDropTarget(x, y) { /* ... */ }
+            function updateGhostPosition(x, y) { /* ... */ }
+            function createGhostTile(tile) { /* ... */ }
+            function clearFeedback() { /* ... */ }
+            function triggerConfetti() { /* ... */ }
+            // --- End of Drag and Drop boilerplate ---
+
+            // --- Initial Setup ---
+            function init() {
+                loadState();
+                loadLevel(gameState.currentLevel);
+                
+                checkBtn.addEventListener('click', checkSolution);
+                resetBtn.addEventListener('click', resetCurrentLevel);
+                nextLevelBtn.addEventListener('click', () => {
+                    loadLevel(gameState.currentLevel + 1);
                 });
+                playAgainBtn.addEventListener('click', () => {
+                    loadLevel(0);
+                });
+            }
+
+            init();
+
+            // --- Drag and Drop Functions (Implementations) ---
+             function onCellClick(e) {
+                const cell = e.target;
+                if (cell.textContent && cell.classList.contains('input')) {
+                     const value = cell.textContent;
+                     cell.textContent = '';
+                     cell.dataset.value = '';
+                     const tile = numbersContainer.querySelector(`.number-tile[data-value="${value}"].used`);
+                     if(tile) tile.classList.remove('used');
+                }
+            }
+            function onDragStart(e) {
+                const tile = e.target;
+                if (tile.classList.contains('used')) { e.preventDefault(); return; }
+                currentDraggedTile = tile;
+                currentDraggedValue = tile.dataset.value;
+                e.dataTransfer.setData('text/plain', currentDraggedValue);
+                setTimeout(() => tile.style.opacity = '0.5', 0);
+            }
+            function onDragEnd(e) {
+                if (currentDraggedTile) setTimeout(() => currentDraggedTile.style.opacity = '1', 0);
+                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                currentDraggedTile = null; currentDraggedValue = null;
+            }
+            document.addEventListener('dragover', (e) => {
+                 e.preventDefault();
+                 const dropTarget = getDropTarget(e.clientX, e.clientY);
+                 document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                 if(dropTarget) dropTarget.classList.add('over');
+            });
+            document.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const dropTarget = getDropTarget(e.clientX, e.clientY);
+                if (dropTarget && currentDraggedValue) handleDrop(dropTarget);
+                onDragEnd(e);
+            });
+            function createGhostTile(tile) {
+                ghostTile = tile.cloneNode(true);
+                ghostTile.classList.add('dragging');
+                document.body.appendChild(ghostTile);
+            }
+            function onTouchStart(e) {
+                e.preventDefault();
+                const tile = e.target.closest('.number-tile');
+                if (!tile || tile.classList.contains('used')) return;
+                currentDraggedTile = tile; currentDraggedValue = tile.dataset.value;
+                createGhostTile(tile);
+                const touch = e.touches[0];
+                updateGhostPosition(touch.clientX, touch.clientY);
+                document.addEventListener('touchmove', onTouchMove, {passive: false});
+                document.addEventListener('touchend', onTouchEnd);
+            }
+            function onTouchMove(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                updateGhostPosition(touch.clientX, touch.clientY);
+                const dropTarget = getDropTarget(touch.clientX, touch.clientY);
+                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                if (dropTarget) dropTarget.classList.add('over');
+            }
+            function onTouchEnd(e) {
+                const touch = e.changedTouches[0];
+                const dropTarget = getDropTarget(touch.clientX, touch.clientY);
+                if (dropTarget) handleDrop(dropTarget);
+                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                if (ghostTile) { ghostTile.remove(); ghostTile = null; }
+                currentDraggedTile = null; currentDraggedValue = null;
+                document.removeEventListener('touchmove', onTouchMove);
+                document.removeEventListener('touchend', onTouchEnd);
+            }
+            function updateGhostPosition(x, y) {
+                if(ghostTile) {
+                    ghostTile.style.left = `${x - ghostTile.offsetWidth / 2}px`;
+                    ghostTile.style.top = `${y - ghostTile.offsetHeight / 2}px`;
+                }
+            }
+            function getDropTarget(x, y) {
+                 const element = document.elementFromPoint(x, y);
+                 return (element && element.classList.contains('input')) ? element : null;
+            }
+            function handleDrop(dropTarget) {
+                if (dropTarget.textContent) {
+                    const existingValue = dropTarget.dataset.value;
+                    const existingTile = numbersContainer.querySelector(`.number-tile[data-value="${existingValue}"].used`);
+                    if (existingTile) existingTile.classList.remove('used');
+                }
+                dropTarget.textContent = currentDraggedValue;
+                dropTarget.dataset.value = currentDraggedValue;
+                if (currentDraggedTile) currentDraggedTile.classList.add('used');
+                clearFeedback();
+            }
+            function clearFeedback() {
+                document.querySelectorAll('.input').forEach(cell => cell.classList.remove('correct', 'incorrect'));
                 messageArea.textContent = '';
             }
-
-            function resetGame() {
-                clearFeedback();
-                document.querySelectorAll('.input').forEach(cell => {
-                    cell.textContent = '';
-                    cell.dataset.value = '';
-                });
-                createNumberBank();
-            }
-
             function triggerConfetti() {
                 confettiContainer.innerHTML = '';
                 for (let i = 0; i < 100; i++) {
@@ -466,16 +404,8 @@
                 }
                 setTimeout(() => confettiContainer.innerHTML = '', 5000);
             }
-            
-            function init() {
-                createGrid();
-                createNumberBank();
-                checkBtn.addEventListener('click', checkSolution);
-                resetBtn.addEventListener('click', resetGame);
-            }
-
-            init();
         });
     </script>
 </body>
 </html>
+
