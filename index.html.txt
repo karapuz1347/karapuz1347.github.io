@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Математичний Кросворд</title>
+
+    <!-- PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="МатКрос">
+    <meta name="theme-color" content="#f3f4f6">
+    <link rel="manifest" href="data:application/manifest+json;base64,ewogICJuYW1lIjogItCc0LDRgNGC0LXQvNCw0YLRgtC40Y/QudGGINGB0YDQvtGB0YPRgNCy0L4iLAogICJzaG9ydF9uYW1lIjogItCc0LDRgNGC0YDQvtCyIiwKICAiaWNvbnMiOiBbCiAgICB7CiAgICAgICJzcmMiOiAiZGF0YTppbWFnZS9zdmcreG1sO2Jhc2U2NCxQSE4yWnlCNGJXeHVjejBpYUhSMGNEb3ZMM2QzZHk1M015NXZjbWN2TWpBd01DOXpkbWNuYm05dVlYUWlJRDBpTVRBd0lpQm1hV3hzT2lCM2FHbDBaV04wYVc5dWN5QjNhR1YwWldOMGFXOXVjeTVqYjIwdllYQnBMM1JoZDNjdVoybDBhSFZpTG5KdmJHeHZjM1JoZDNjdVoybDBhSFZpTDNCNEwzUnpMekl3TURBdmMzWm5MelV3SURJeU1DSStVR2x1WjNkaFoyVnVkR0ZzYkM1amIyMHViV0Z5YTJSdmQyND0iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjE5MngxOTIiCiAgICB9LAogICAgewogICAgICAic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNbXN2Y0d4aGRYUm9MM1J6YVhSMGFXOXVjeTVqYjIwdllYQnBMM1JoZDNjdVoybDBhSFZpTG5KdmJHeHZjM1JoZDNjdVoybDBhSFZpTDNCNEwzUnpMekl3TURBdmMzWm5MelV3SURJeU1DSStVR2x1WjNkaFoyVnVkR0ZzYkM1amIyMHViV0Z5YTJSdmQyND0iLAogICAgICAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwKICAgICAgInNpemVzIjogIjUxMng1MTIiCiAgICB9CiAgXSwKICAic3RhcnRfdXJsIjogIi4iLAogICJkaXNwbGF5IjogInN0YW5kYWxvbmUiLAogICJiYWNrZ3JvdW5kX2NvbG9yIjogIiNmM2Y0ZjYiLAogICJ0aGVtZV9jb2xvciI6ICIjZjNmNGY2IiwKICAiZGVzY3JpcHRpb24iOiAi0JLQtNGB0LXQu9CwINC80LDRgNGC0LXQvNCw0YLRgtC40Y/QudGGINCz0L7Qu9C+0LLQvtC60LrQsNGC0LAg0LTQvtC10L3Rg9C60LDQvdC90YvQtSDRjNC+0LfQutC1LiIKfQo=">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            touch-action: manipulation; /* Improved touch handling for PWAs */
+            overscroll-behavior: contain; /* Prevents pull-to-refresh */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            grid-template-rows: repeat(5, minmax(0, 1fr));
+            gap: 0.5rem;
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1 / 1;
+        }
+        .cell {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 0.75rem;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            font-weight: bold;
+            color: #1f2937;
+        }
+        .input {
+            background-color: #f3f4f6;
+            border: 2px dashed #d1d5db;
+            cursor: pointer;
+            transition: background-color 0.2s, border-color 0.2s;
+        }
+        .input.over {
+            background-color: #e0f2fe;
+            border-color: #38bdf8;
+        }
+        .given, .operator, .equals {
+            background-color: #fff;
+        }
+        .number-tile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: clamp(50px, 15vw, 60px);
+            height: clamp(50px, 15vw, 60px);
+            background-color: #fff;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.75rem;
+            font-size: clamp(1.2rem, 5vw, 1.5rem);
+            font-weight: bold;
+            cursor: grab;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s, opacity 0.2s;
+            user-select: none;
+        }
+        .number-tile:active {
+            cursor: grabbing;
+            transform: scale(1.1);
+        }
+        .number-tile.dragging {
+            opacity: 0.5;
+            z-index: 1000;
+            position: fixed; /* Allows it to be dragged anywhere on screen */
+            pointer-events: none; /* Prevents it from interfering with drop targets */
+        }
+        .number-tile.used {
+            opacity: 0.3;
+            cursor: not-allowed;
+            background-color: #f9fafb;
+        }
+        .correct {
+            border-color: #22c55e !important;
+            background-color: #dcfce7 !important;
+        }
+        .incorrect {
+            border-color: #ef4444 !important;
+            background-color: #fee2e2 !important;
+        }
+        .confetti-container {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100;
+        }
+        .confetti {
+            position: absolute; width: 10px; height: 10px; background-color: #f00; border-radius: 50%; animation: fall 5s linear forwards;
+        }
+        @keyframes fall {
+            to { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-2 sm:p-4">
+
+    <div id="confetti-container" class="confetti-container"></div>
+
+    <div class="w-full max-w-md bg-white p-4 sm:p-6 rounded-2xl shadow-lg">
+        <div class="text-center mb-4">
+            <h1 class="text-2xl sm:text-3xl font-bold text-gray-800">Математичний Кросворд</h1>
+            <p class="text-gray-500">Рівень 1</p>
+        </div>
+
+        <div class="flex justify-center mb-4">
+            <div id="grid-container" class="grid-container"></div>
+        </div>
+
+        <p id="message-area" class="text-center h-6 mb-4 font-semibold"></p>
+
+        <div id="numbers-container" class="flex flex-wrap justify-center gap-2 mb-4"></div>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+            <button id="check-btn" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-xl transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-blue-300">
+                Перевірити
+            </button>
+            <button id="reset-btn" class="w-full bg-gray-200 hover:bg-gray-300 text-gray-700 font-bold py-3 px-4 rounded-xl transition-transform transform hover:scale-105 focus:outline-none focus:ring-4 focus:ring-gray-300">
+                Скинути
+            </button>
+        </div>
+    </div>
+    
+    <div id="install-instructions" class="w-full max-w-md bg-blue-50 border-2 border-blue-200 p-4 rounded-2xl shadow-lg mt-6 text-sm text-blue-800 relative">
+        <button id="close-install" class="absolute top-2 right-3 text-2xl font-bold text-blue-400 hover:text-blue-600">&times;</button>
+        <p class="font-bold mb-2">💡 Як встановити гру?</p>
+        <p><strong>На iPhone:</strong> Натисніть "Поділитися" <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 inline-block -mt-1" viewBox="0 0 20 20" fill="currentColor"><path d="M15 8a3 3 0 10-2.977-2.63l-4.94 2.47a3 3 0 100 4.319l4.94 2.47a3 3 0 10.895-1.789l-4.94-2.47a3.027 3.027 0 000-.74l4.94-2.47C13.456 7.68 14.19 8 15 8z" /></svg> в Safari, а потім "На екран 'Початок'".</p>
+        <p class="mt-1"><strong>На Android:</strong> Натисніть меню ⋮ в Chrome, а потім "Установити застосунок".</p>
+    </div>
+
+    <script>
+        // --- Service Worker Registration ---
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                const swContent = `
+                    const CACHE_NAME = 'math-crossword-cache-v1';
+                    const urlsToCache = [
+                        './math_crossword_ua.html' 
+                    ];
+                    self.addEventListener('install', event => {
+                        event.waitUntil(
+                            caches.open(CACHE_NAME).then(cache => {
+                                return cache.addAll(urlsToCache);
+                            })
+                        );
+                    });
+                    self.addEventListener('fetch', event => {
+                        event.respondWith(
+                            caches.match(event.request).then(response => {
+                                return response || fetch(event.request);
+                            })
+                        );
+                    });
+                `;
+                const blob = new Blob([swContent], { type: 'application/javascript' });
+                const swURL = URL.createObjectURL(blob);
+                navigator.serviceWorker.register(swURL)
+                    .then(registration => console.log('ServiceWorker registration successful with scope: ', registration.scope))
+                    .catch(error => console.log('ServiceWorker registration failed: ', error));
+            });
+        }
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const gridContainer = document.getElementById('grid-container');
+            const numbersContainer = document.getElementById('numbers-container');
+            const checkBtn = document.getElementById('check-btn');
+            const resetBtn = document.getElementById('reset-btn');
+            const messageArea = document.getElementById('message-area');
+            const confettiContainer = document.getElementById('confetti-container');
+            const installInstructions = document.getElementById('install-instructions');
+            const closeInstallBtn = document.getElementById('close-install');
+            
+            // --- Hide install instructions if app is already running in standalone mode ---
+            if (window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone) {
+                 installInstructions.style.display = 'none';
+            }
+            closeInstallBtn.onclick = () => installInstructions.style.display = 'none';
+
+            const puzzleDefinition = {
+                rows: 5,
+                cols: 5,
+                numbers: [2, 3, 5, 7],
+                solution: { 'c00': 7, 'c02': 3, 'c20': 5, 'c22': 2 },
+                grid: [
+                    { id: 'c00', type: 'input' }, { type: 'operator', value: '+' }, { id: 'c02', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '10' },
+                    { type: 'operator', value: '+' }, null, { type: 'operator', value: '*' }, null, null,
+                    { id: 'c20', type: 'input' }, { type: 'operator', value: '*' }, { id: 'c22', type: 'input' }, { type: 'equals', value: '=' }, { type: 'given', value: '10' },
+                    { type: 'equals', value: '=' }, null, { type: 'equals', value: '=' }, null, null,
+                    { type: 'given', value: '12' }, null, { type: 'given', value: '6' }, null, null,
+                ]
+            };
+            
+            let currentDraggedTile = null;
+            let currentDraggedValue = null;
+            let ghostTile = null;
+
+            function shuffleArray(array) {
+                for (let i = array.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [array[i], array[j]] = [array[j], array[i]];
+                }
+                return array;
+            }
+
+            function createGrid() {
+                gridContainer.innerHTML = '';
+                puzzleDefinition.grid.forEach(cellData => {
+                    if (cellData === null) {
+                        gridContainer.appendChild(document.createElement('div'));
+                        return;
+                    }
+                    const cell = document.createElement('div');
+                    cell.className = `cell ${cellData.type}`;
+                    if (cellData.id) cell.id = cellData.id;
+                    if (cellData.value) cell.textContent = cellData.value;
+                    
+                    if (cellData.type === 'input') {
+                        cell.addEventListener('click', onCellClick);
+                    }
+                    gridContainer.appendChild(cell);
+                });
+            }
+
+            function createNumberBank() {
+                numbersContainer.innerHTML = '';
+                shuffleArray([...puzzleDefinition.numbers]).forEach(num => {
+                    const tile = document.createElement('div');
+                    tile.className = 'number-tile';
+                    tile.textContent = num;
+                    tile.draggable = true;
+                    tile.dataset.value = num;
+                    
+                    tile.addEventListener('dragstart', onDragStart);
+                    tile.addEventListener('dragend', onDragEnd);
+                    tile.addEventListener('touchstart', onTouchStart, {passive: false});
+                    numbersContainer.appendChild(tile);
+                });
+            }
+            
+            function onCellClick(e) {
+                const cell = e.target;
+                if (cell.textContent && cell.classList.contains('input')) {
+                     const value = cell.textContent;
+                     cell.textContent = '';
+                     cell.dataset.value = '';
+                     const tile = numbersContainer.querySelector(`.number-tile[data-value="${value}"].used`);
+                     if(tile) {
+                         tile.classList.remove('used');
+                     }
+                }
+            }
+
+            function onDragStart(e) {
+                const tile = e.target;
+                if (tile.classList.contains('used')) {
+                    e.preventDefault(); return;
+                }
+                currentDraggedTile = tile;
+                currentDraggedValue = tile.dataset.value;
+                e.dataTransfer.setData('text/plain', currentDraggedValue);
+                setTimeout(() => tile.classList.add('dragging'), 0);
+            }
+
+            function onDragEnd(e) {
+                if (currentDraggedTile) {
+                    currentDraggedTile.classList.remove('dragging');
+                }
+                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                currentDraggedTile = null;
+                currentDraggedValue = null;
+            }
+            
+            document.addEventListener('dragover', (e) => {
+                 e.preventDefault();
+                 const dropTarget = getDropTarget(e.clientX, e.clientY);
+                 document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                 if(dropTarget) dropTarget.classList.add('over');
+            });
+
+            document.addEventListener('drop', (e) => {
+                e.preventDefault();
+                const dropTarget = getDropTarget(e.clientX, e.clientY);
+                if (dropTarget && currentDraggedValue) {
+                    handleDrop(dropTarget);
+                }
+                onDragEnd(e);
+            });
+            
+            function createGhostTile(tile) {
+                ghostTile = tile.cloneNode(true);
+                ghostTile.classList.add('dragging');
+                document.body.appendChild(ghostTile);
+            }
+
+            function onTouchStart(e) {
+                e.preventDefault();
+                const tile = e.target;
+                if (tile.classList.contains('used') || !tile.classList.contains('number-tile')) return;
+                
+                currentDraggedTile = tile;
+                currentDraggedValue = tile.dataset.value;
+                
+                createGhostTile(tile);
+                const touch = e.touches[0];
+                updateGhostPosition(touch.clientX, touch.clientY);
+                
+                document.addEventListener('touchmove', onTouchMove, {passive: false});
+                document.addEventListener('touchend', onTouchEnd);
+            }
+
+            function onTouchMove(e) {
+                e.preventDefault();
+                const touch = e.touches[0];
+                updateGhostPosition(touch.clientX, touch.clientY);
+
+                const dropTarget = getDropTarget(touch.clientX, touch.clientY);
+                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                if (dropTarget) {
+                    dropTarget.classList.add('over');
+                }
+            }
+            
+            function onTouchEnd(e) {
+                const touch = e.changedTouches[0];
+                const dropTarget = getDropTarget(touch.clientX, touch.clientY);
+
+                if (dropTarget) {
+                    handleDrop(dropTarget);
+                }
+
+                document.querySelectorAll('.input.over').forEach(c => c.classList.remove('over'));
+                if (ghostTile) {
+                    ghostTile.remove();
+                    ghostTile = null;
+                }
+                currentDraggedTile = null;
+                currentDraggedValue = null;
+                
+                document.removeEventListener('touchmove', onTouchMove);
+                document.removeEventListener('touchend', onTouchEnd);
+            }
+            
+            function updateGhostPosition(x, y) {
+                if(ghostTile) {
+                    ghostTile.style.left = `${x - ghostTile.offsetWidth / 2}px`;
+                    ghostTile.style.top = `${y - ghostTile.offsetHeight / 2}px`;
+                }
+            }
+            
+            function getDropTarget(x, y) {
+                 const element = document.elementFromPoint(x, y);
+                 return (element && element.classList.contains('input')) ? element : null;
+            }
+            
+            function handleDrop(dropTarget) {
+                if (dropTarget.textContent) {
+                    const existingValue = dropTarget.dataset.value;
+                    const existingTile = numbersContainer.querySelector(`.number-tile[data-value="${existingValue}"].used`);
+                    if (existingTile) {
+                        existingTile.classList.remove('used');
+                    }
+                }
+                
+                dropTarget.textContent = currentDraggedValue;
+                dropTarget.dataset.value = currentDraggedValue;
+
+                if (currentDraggedTile) {
+                   currentDraggedTile.classList.add('used');
+                }
+                
+                clearFeedback();
+            }
+
+            function checkSolution() {
+                let allCorrect = true;
+                let isComplete = true;
+
+                for (const id in puzzleDefinition.solution) {
+                    const cell = document.getElementById(id);
+                    if (!cell.textContent) {
+                        isComplete = false;
+                        continue;
+                    }
+                    if (cell.textContent != puzzleDefinition.solution[id]) {
+                        allCorrect = false;
+                        cell.classList.add('incorrect');
+                    } else {
+                        cell.classList.add('correct');
+                    }
+                }
+
+                if (!isComplete) {
+                     messageArea.textContent = "Будь ласка, заповніть усі клітинки.";
+                     messageArea.style.color = '#f59e0b'; // amber-500
+                     return;
+                }
+
+                if (allCorrect) {
+                    messageArea.textContent = 'Чудово! Все вірно!';
+                    messageArea.style.color = '#22c55e'; // green-500
+                    triggerConfetti();
+                } else {
+                    messageArea.textContent = 'Десь є помилка. Спробуйте ще раз.';
+                    messageArea.style.color = '#ef4444'; // red-500
+                }
+            }
+
+            function clearFeedback() {
+                document.querySelectorAll('.input').forEach(cell => {
+                    cell.classList.remove('correct', 'incorrect');
+                });
+                messageArea.textContent = '';
+            }
+
+            function resetGame() {
+                clearFeedback();
+                document.querySelectorAll('.input').forEach(cell => {
+                    cell.textContent = '';
+                    cell.dataset.value = '';
+                });
+                createNumberBank();
+            }
+
+            function triggerConfetti() {
+                confettiContainer.innerHTML = '';
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = Math.random() * -100 + 'vh';
+                    confetti.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
+                    confetti.style.animationDelay = Math.random() * 2 + 's';
+                    confettiContainer.appendChild(confetti);
+                }
+                setTimeout(() => confettiContainer.innerHTML = '', 5000);
+            }
+            
+            function init() {
+                createGrid();
+                createNumberBank();
+                checkBtn.addEventListener('click', checkSolution);
+                resetBtn.addEventListener('click', resetGame);
+            }
+
+            init();
+        });
+    </script>
+</body>
+</html>
+
+
